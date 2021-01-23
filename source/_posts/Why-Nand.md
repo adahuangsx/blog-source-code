@@ -4,6 +4,7 @@ toc: true
 date: 2021-01-23 13:25:32
 tags: ["Notes", "Coursera", "Nand2Tetris"]
 categories: ["Coursera", "Nand2Tetris"]
+thumbnail: https://i.ytimg.com/vi/kcORYKPL53o/maxresdefault.jpg
 ---
 
 

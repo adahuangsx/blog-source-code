@@ -4,6 +4,7 @@ date: 2020-12-10 14:28:28
 toc: true
 categories: [Projects]
 tags: [Search Engine, Java, Spring MVC]
+thumbnail: https://cdn1.vectorstock.com/i/1000x1000/73/50/the-clapper-board-icon-movie-symbol-flat-vector-5277350.jpg
 ---
 
 

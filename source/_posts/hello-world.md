@@ -2,6 +2,7 @@
 title: Hexo Memo
 tags: Hexo
 toc: true # this is for the right-up corner wiki-like categories.
+thumbnail: https://raw.githubusercontent.com/hexojs/logo/master/hexo-logo-avatar.png
 ---
 ## Create a new post
 
