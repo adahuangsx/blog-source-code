@@ -11,7 +11,7 @@ tags: [Search Engine, Java, Spring MVC]
 
 This is the final project of INFSCI 2140 Information Storage and Retrieval. We built a search engine of movie lines. Users can input a phrase or a complete sentence and it returns a list of best matched movies with excerpts.
 
-# Teammates
+### Teammates
 
 * Zijian Xu
 * Long Yan
@@ -52,18 +52,11 @@ It contains 960 film scripts including dialogues and scene descriptions.
 
 
 
-
-
-
 # Use Case
 
 Users input a phrase or sentence like "show me the money", and our system outputs:
 
 ![Searching results](/images/IRProject/usecase.png)
-
-
-
-
 
 
 
