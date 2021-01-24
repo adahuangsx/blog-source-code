@@ -7,7 +7,7 @@ categories: ["Coursera", "Nand2Tetris"]
 thumbnail: https://i.ytimg.com/vi/kcORYKPL53o/maxresdefault.jpg
 ---
 
-
+这一章除了复习了一遍以前学过的与非或逻辑门，还介绍了为什么一个**与非门**就能表示所有的逻辑表达式。
 
 # Boolean logic (unit 1.1 -- 1.3)
 
@@ -37,15 +37,15 @@ thumbnail: https://i.ytimg.com/vi/kcORYKPL53o/maxresdefault.jpg
 
 ## Truth table to Boolean Expression
 
-1. Focus all the "1" results
+1. **Focus all the "1" results**
 
-2. write down all the expressions which only apply to the single rows in the truth table
+2. **write down all the expressions which only apply to the single rows in the truth table**
 
-3. OR these expressions together
+3. **OR these expressions together**
 
    ![Truth table to Boolean Expression](/images/Nand2Tetris/table2expression.png)
 
-4. Simplify it.
+4. **Simplify it.**
 
    In the example above, give a close look at the first two clauses: we have both possibilities for "y" and the same fixed value for "x". So, we can combine the two clauses, which does not ask about y and only ask about "NOT(x)" and "NOT(z)".
 
@@ -55,24 +55,28 @@ thumbnail: https://i.ytimg.com/vi/kcORYKPL53o/maxresdefault.jpg
 
    **Note that** finding the shortest expressions is not easy for humans nor for algorithms, because this is a NP-hard problem.
 
-## Theorem
+---
+
+## To prove Why-Nand
+
+### The Theorem
 
 Any Boolean function can be represented using an expression only containing AND and NOT operations.
 
 Then, we introduce the NAND gate, which is proved to be the **only needed gates**.
 
-### NAND function
+### Here comes the Nand
 
 x NAND y == NOT (x AND y)
 
 <u>*"NAND" is short for "NOT AND".*</u>
 
-### Proof
+### Nand takes over.
 
 1. NOT (x) == x NAND x
 2. x AND y == NOT (x NAND y)
 
-
+---
 
 The gate interface in unique. There is only one way to describe its functionality. Meantime, there are multiple implementations that realize the same obstruction. This duality of **"one obstruction, many different implementations"** is very typical in Computer Science.
 
