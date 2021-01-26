@@ -82,6 +82,15 @@ The gate interface in unique. There is only one way to describe its functionalit
 
 所以这里解答了我对计算机的一个疑问，那就是不必纠结一个复杂的功能最底层到底是怎么实现的，而是像这门课一样，分层地理解。了解了一层以后，就把这层的知识作为已知，再去了解上面一层。
 
+---
+
+补充一个后面答疑问到的几个关于Nand的问题：
+
+Q. 用NAND以外别的gate做计算机的基础行不行？
+A. 当然可以，比如`NOR (NOT OR)`。这就像物理中用不同的坐标系一样。只不过NAND相比于其他gate造价相对便宜。
+
+Q. 这门课直接把Nand拿来用，但是黑盒里面是怎么实现的呢？
+A. 这更像是一个物理问题，不属于这门课的范围。但是很容易举出一个实现的例子：[用NMOS实现与非门电路](https://www.51dzw.com/embed/embed_83634.html)
 
 
 # References
