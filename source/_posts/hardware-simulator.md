@@ -48,6 +48,26 @@ The compare file `.cmp`, whose previous incarnation (前身) is a correct output
 **In this course, we play the role of developers.**
 
 
+---
+
+## Multi-Bit Buses
+
+*"Bus" means "many" in Latin.*
+
+### Some Syntax Notes
+
+Say, an integer is `aaa[16]`:
+
+* `aaa` is the integer's name
+* `aaa[0]` is its first bit. （注意是LSB，就是最低位/最右边的一位。）
+* `aaa[7..15]`, with 2 dots in the middle, means its sub-bus.
+
+Other syntaxes:
+
+* `true` and `false` can represent a bus with constant signal of any width.
+
+
+
 
 
 
