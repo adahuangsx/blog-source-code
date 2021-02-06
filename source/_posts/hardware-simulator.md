@@ -66,7 +66,12 @@ Other syntaxes:
 
 * `true` and `false` can represent a bus with constant signal of any width.
 
+---
 
+补充一个后面答疑问到的几个关于HDL的问题：
+
+Q. 这门课中的HDL语言是现实中使用的吗？
+A. 很相似，比如和VHDL相比，VHDL可能在基本的HDL基础上加了一些类C的语言，比如For这些。（所以code block我也就近用了VHDL的高亮）
 
 
 

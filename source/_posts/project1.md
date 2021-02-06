@@ -1,5 +1,5 @@
 ---
-title: "project 1: Boolean Logic"
+title: "Project 1: Boolean Logic"
 toc: true
 date: 2021-01-25 22:08:14
 tags: ["Notes", "Coursera", "Nand2Tetris"]
@@ -98,9 +98,17 @@ OUT out[16];
 * chip不能调用自己。
 * 记得看HDL Survival Guide 和各种资源！
 
+* VSCode 居然有Nand2Tetris的专门编辑.hdl文件的插件。
+![](/images/Nand2Tetris/vscode.png)
+
+
+### Some tips when doing it
+
+* 变量名不要用下划线！（别问我怎么知道的……）
 
 
 
 ## 参考资料
 > - [Hardware Simulator Tutorial](https://b1391bd6-da3d-477d-8c01-38cdf774495a.filesusr.com/ugd/44046b_bfd91435260748439493a60a8044ade6.pdf)
+> - [HDL Survival Guide](https://www.nand2tetris.org/hdl-survival-guide)
 > - [其他资源在这里，大都是google doc的](https://www.nand2tetris.org/project01)
