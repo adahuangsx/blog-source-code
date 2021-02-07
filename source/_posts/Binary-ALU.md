@@ -27,9 +27,13 @@ Adding two numbers in binary representation is pretty simple. Here we are gonna 
 
 When we focus on a single slice of bits adding, like "1 + 1", it has 2 outputs: a carry bit "1" and a result bit "0".
 
-(truth table)
+| a    | b    | sum(Xor) | carry(And) |
+| ---- | ---- | :------: | :--------: |
+| 0    | 0    | 0        | 0          |
+| 0    | 1    | 1        | 0          |
+| 1    | 0    | 1        | 0          |
+| 1    | 1    | 0        | 1          |
 
-(chip code)
 
 
 
@@ -39,13 +43,29 @@ When we focus on a single slice of bits adding, like "1 + 1", it has 2 outputs: 
 
 The last **Half Adder** is only for the case when carry is "0", while **Full Adder** includes adding the carry and 2 bits together.
 
-(truth table)
 
-(chip code)
+| a    | b    | c    | sum  | carry |
+| ---- | ---- | ---- | ---: | ----: |
+| 0    | 0    | 0    |  0   |   0   |
+| 0    | 0    | 1    |  1   |   0   |
+| 0    | 1    | 0    |  1   |   0   |
+| 0    | 1    | 1    |  0   |   1   |
+| 1    | 0    | 0    |  1   |   0   |
+| 1    | 0    | 1    |  0   |   1   |
+| 1    | 1    | 0    |  0   |   1   |
+| 1    | 1    | 1    |  1   |   1   |
+
+**Tip:** A Full Adder can be built with 2 Half Adders.
 
 ### Adder: adds 2 numbers
 
 Assuming the numbers are **16-bit long**, we can implement it by connecting <u>16 Full Adders</u> or <u>15 Full Adders and 1 Half Adder</u> for the right-most bits.
+
+**Tips:**
+
+1. The carry bit is "piped" up the significance ladder, from right to left.
+2. The MSB carry bit should be ignored.
+
 
 ---
 
