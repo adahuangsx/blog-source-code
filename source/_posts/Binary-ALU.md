@@ -3,7 +3,7 @@ title: Arithmetic Logic Unit (ALU)
 toc: true
 date: 2021-02-06 09:26:15
 tags: ["Notes", "Coursera", "Nand2Tetris"]
-categories: ["Coursera", "Nand2Tetris"]
+categories: ["Nand2Tetris"]
 thumbnail: /images/Nand2Tetris/theHackALU.png
 ---
 

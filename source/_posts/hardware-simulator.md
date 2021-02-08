@@ -3,7 +3,7 @@ title: Hardware simulator
 toc: true
 date: 2021-01-23 22:15:40
 tags: ["Notes", "Coursera", "Nand2Tetris"]
-categories: ["Coursera", "Nand2Tetris"]
+categories: ["Nand2Tetris"]
 thumbnail: https://i.ytimg.com/vi/kcORYKPL53o/maxresdefault.jpg
 ---
 

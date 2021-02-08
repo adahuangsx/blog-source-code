@@ -3,7 +3,7 @@ title: Binary and Arithmetic
 toc: true
 date: 2021-02-05 19:08:31
 tags: ["Notes", "Coursera", "Nand2Tetris"]
-categories: ["Coursera", "Nand2Tetris"]
+categories: ["Nand2Tetris"]
 thumbnail: https://i.ytimg.com/vi/kcORYKPL53o/maxresdefault.jpg
 ---
 

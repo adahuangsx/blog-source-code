@@ -2,8 +2,8 @@
 title: "Project 1: Boolean Logic"
 toc: true
 date: 2021-01-25 22:08:14
-tags: ["Notes", "Coursera", "Nand2Tetris"]
-categories: ["Coursera", "Nand2Tetris"]
+tags: ["Projects", "Coursera", "Nand2Tetris"]
+categories: ["Nand2Tetris"]
 thumbnail: /images/Nand2Tetris/the-course-is-about.png
 ---
 

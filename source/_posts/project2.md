@@ -2,8 +2,8 @@
 title: "Project 2: Boolean Arithmetic"
 toc: true
 date: 2021-02-07 09:38:22
-tags: ["Notes", "Coursera", "Nand2Tetris"]
-categories: ["Coursera", "Nand2Tetris"]
+tags: ["Projects", "Coursera", "Nand2Tetris"]
+categories: ["Nand2Tetris"]
 thumbnail: https://i.ytimg.com/vi/kcORYKPL53o/maxresdefault.jpg
 ---
 
