@@ -50,11 +50,11 @@ Say, we want the register to remember the number `123`. We can:
 
 * Abstractly, we view RAM unit as a sequence of $n$ addressable registers, with address `0` to `n - 1`.
 * At any point of time, only one register can be selected no matter how many registers exist.
-* To represent the address input, it should be $k$ long, where $k = \log_2^n$.
+* To represent the address input, it should be $k$ long, where $k = \log_2 n$.
 * $n$ has nothing to do with the word width $w$.
 * **In a word,** RAM is a sequential chip, and it depends on a clock input.
 
-### Read & Write
+### Read & Write Logic
 
 The same as a single register, except switching the address code.
 
@@ -72,8 +72,49 @@ Stay tuned... we need them for the next Hack Computer.
 
 ---
 
-## Why "Random Access"?
+### Why "Random Access"?
 
 RAM stands for "Random Access Memory", because a magic thing is, once the address code is provide, no matter how many registers, 8 or 8 million, the data is accessible after the same moment.
+
+
+---
+
+## Counter
+
+The computer needs a **Program Counter (PC)**  to keep track of the instruction which should be fetched and executed next.
+
+The PC contains the address of the instruction to fetch.
+
+### 3 control settings:
+
+1. **Reset:** fetch the first instruction		`pc = 0`
+2. **Next:** fetch the next instruction `pc++`
+3. **Goto:** fetch instruction `n`          `pc = n`
+
+### Inputs & Outputs
+
+```vhdl
+IN in[16], laod, inc, reset;
+OUT out[16];
+```
+
+### Chip Logic
+
+```java
+if (reset[t] == 1)
+	out[t + 1] = 0;  // reseting the counter
+else if (load[t] == 1)
+    out[t + 1] = in[t]; // set the counter to input value
+else if (inc[t] == 1)
+    out[t + 1]++;    // increment the counter
+else
+    out[t + 1] = out[t];
+```
+
+### How in the Hardware Simulator?
+
+1. Load in  the HDL file `nand2tetris\tools\builtInChips\PC.hdl`.
+2. Note the priority: `reset` first, then `load`, `inc` at last.
+3. The `>>` button can tick the clock automatically every second. 
 
 
