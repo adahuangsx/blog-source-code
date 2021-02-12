@@ -47,7 +47,7 @@ The above topic requires an element: **Remembering State**, so that the time uni
 
 That means it has to be in two different physical states, which must be able to **shift** according to the logic of the previous time unit.
 
-## Flip Flops (Unit 3.2)
+## Flip Flops(触发器) (Unit 3.2)
 
 Gates that can **flip** between 2 gates ---> Flip Flops
 
