@@ -75,7 +75,13 @@ Above shows how gate maintains "memory". Of course the outer layer is necessary 
 
 ---
 
+---
 
+## While Doing It
+
+* HDL is a description language not a programming language. It is OK to input a new pin name, which appears in the line below, to **implement the circle** between gates. 
+
+---
 
 
 ## Reference
