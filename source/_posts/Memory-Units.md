@@ -4,7 +4,7 @@ toc: true
 date: 2021-02-10 13:08:42
 tags: ["Notes", "Coursera", "Nand2Tetris"]
 categories: ["Nand2Tetris"]
-thumbnail:
+thumbnail: /images/Nand2Tetris/RAMunit.png
 ---
 
 Given the 1-bit register we learned in the last post, we can build more things!

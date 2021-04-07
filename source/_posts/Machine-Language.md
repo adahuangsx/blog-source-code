@@ -4,7 +4,7 @@ toc: true
 date: 2021-03-06 13:08:42
 tags: ["Notes", "Coursera", "Nand2Tetris"]
 categories: ["Nand2Tetris"]
-thumbnail:
+thumbnail: /images/Nand2Tetris/hackHardware.png
 ---
 
 **Alan Turing** raised the idea of **Universality** and considered the theoretical model.

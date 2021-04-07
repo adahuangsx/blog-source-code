@@ -4,7 +4,7 @@ toc: true
 date: 2021-03-10 17:58:42
 tags: ["Notes", "Coursera", "Nand2Tetris"]
 categories: ["Nand2Tetris"]
-thumbnail:
+thumbnail: /images/Nand2Tetris/inputThumbnail.png
 ---
 
 We will learn to use bits to manipulate the peripheral devices.

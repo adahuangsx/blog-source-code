@@ -21,7 +21,7 @@ The signals are viewed as a indivisible thing **as if nothing changes within eac
 
 **You may wonder if this is real.** Indeed, there may be delay in physical electrical signals. But, we can think it as a way that **the voltage change** (the grey area in the screenshot below) **happens between cycles**, while luckily, the cycles are a little bit wider than this instability. So, it is safe to ignore it and focus on the end of each time unit. 
 
-![](D:\Winter 20\blog\themes\wikitten\source\images\Nand2Tetris\theClock.png)
+![](/images/Nand2Tetris/theClock.png)
 
 Also, (my guess) **another reason** may be given by the answer "Why binary?". ---> it may takes time to reach the final and consistent stage but not necessarily precise but it's already enough to tell zero from one.
 
