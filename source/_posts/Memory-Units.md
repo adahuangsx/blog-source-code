@@ -7,11 +7,13 @@ categories: ["Nand2Tetris"]
 thumbnail: /images/Nand2Tetris/RAMunit.png
 ---
 
+# Memory Units (Unit 3.3)
+
 Given the 1-bit register we learned in the last post, we can build more things!
 
 
 
-## The basic memory element: Register (Unit 3.3)
+## The basic memory element: Register
 
 ![16-bit Register](/images/Nand2Tetris/16BitRegister.png)
 

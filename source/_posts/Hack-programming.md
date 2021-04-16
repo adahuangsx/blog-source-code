@@ -7,7 +7,7 @@ categories: ["Nand2Tetris"]
 thumbnail: /images/Nand2Tetris/hackHardware.png
 ---
 
-# Working with Registers and Memory
+# Working with Registers and Memory (Unit 4.6)
 
 ### Let's recall
 
@@ -113,7 +113,7 @@ Similar to `goto`.
 
 ---
 
-# Variables
+# Variables (Unit 4.7)
 
 In Hack, we only have 1 type of variables, which is 16-bit.
 
@@ -154,7 +154,7 @@ variable没有`(LABEL)` 这样的declaration，而branching一定有代码段中
 
 ---
 
-# Pointers
+# Pointers (Unit 4.8)
 
 ![](D:\Winter 20\blog\themes\wikitten\source\images\Nand2Tetris\pointers in one slide.png)
 

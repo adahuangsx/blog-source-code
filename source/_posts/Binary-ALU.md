@@ -9,7 +9,7 @@ thumbnail: /images/Nand2Tetris/theHackALU.png
 
 Adding two numbers in binary representation is pretty simple. Here we are gonna build an Adder for binary numbers.
 
-# Starter
+# Starter (Unit 2.2)
 
 ## Why does the Adder matter most?
 
@@ -96,7 +96,7 @@ Then, add one. ---> easy.
 
 ---
 
-# ALU
+# ALU (Unit 2.4)
 
 Where is ALU? Let's take a close look into the computer:
 

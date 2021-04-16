@@ -7,6 +7,8 @@ categories: ["Nand2Tetris"]
 thumbnail: https://i.ytimg.com/vi/kcORYKPL53o/maxresdefault.jpg
 ---
 
+# Binary and Arithmetic (Unit 2.1)
+
 Adding two numbers in binary representation is pretty simple. Here we are gonna build an Adder for binary numbers.
 
 ## Why does the Adder matter most?
