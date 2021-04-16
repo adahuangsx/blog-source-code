@@ -7,6 +7,13 @@ categories: ["Nand2Tetris"]
 thumbnail: https://i.ytimg.com/vi/kcORYKPL53o/maxresdefault.jpg
 ---
 
+**Write 2 programs in Hack Machine Language:** 
+
+1. a loop doing multiplication;
+2. a listener for keyboard to blacken the screen.
+
+
+
 略
 
 
