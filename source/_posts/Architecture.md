@@ -1,17 +1,17 @@
 ---
-title: 5-Von Neumann Architecture
+title: 5-Computer Architecture
 toc: true
 date: 2021-04-15 21:08:31
 tags: ["Notes", "Coursera", "Nand2Tetris"]
 categories: ["Nand2Tetris"]
-thumbnail:
+thumbnail: /images/Nand2Tetris/VonNeumannBuses.png
 ---
 
 ## Buses in Von Neumann Architecture (Unit 5.1)
 
-Von Neumann 的3个数据流（bus）：
+3 Information flows (bus):
 
-![Information Flows](D:\Winter 20\blog\themes\wikitten\source\images\Nand2Tetris\VonNeumannBuses.png)
+![Information Flows](/images/Nand2Tetris/VonNeumannBuses.png)
 
 
 
@@ -30,7 +30,7 @@ Von Neumann 的3个数据流（bus）：
 
 ### Program Counter
 
-![Program Counter](D:\Winter 20\blog\themes\wikitten\source\images\Nand2Tetris\Program Counter.png)
+![Program Counter](/images/Nand2Tetris/Program%20Counter.png)
 
 
 
@@ -40,7 +40,7 @@ The instructions and data pieces are stored in a single memory, so there is a cl
 
 **Solution:**
 
-![](D:\Winter 20\blog\themes\wikitten\source\images\Nand2Tetris\Clash Multiplexer.png)
+![](/images/Nand2Tetris/Clash%20Multiplexer.png)
 
 
 
