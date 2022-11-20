@@ -104,5 +104,5 @@ theme: wikitten
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/adahuangsx/adahuangsx.github.io.git
+  repo: git@github.com:adahuangsx/blog-source-code.git
   branch: master
