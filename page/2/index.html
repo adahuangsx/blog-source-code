@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Ada.h</title>
+    
+    
+        <meta name="keywords" content="Ada.h" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Ada.h">
+<meta property="og:url" content="https://adahuangsx.github.io/page/2/index.html">
+<meta property="og:site_name" content="Ada.h">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Ada Huang">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Ada.h" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Ada.h</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            DDIA
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/05/20/new-post/">三、存储与检索</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Nand2Tetris
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/01/23/Why-Nand/">Why Nand? -- starting Nand2Tetris part I</a></li>  <li class="file"><a href="/2021/01/23/hardware-simulator/">Hardware simulator</a></li>  <li class="file"><a href="/2021/01/25/project1/">Project 1: Boolean Logic</a></li>  <li class="file"><a href="/2021/02/05/Binary-and-arithmetic/">Binary and Arithmetic</a></li>  <li class="file"><a href="/2021/02/06/Binary-ALU/">Arithmetic Logic Unit (ALU)</a></li>  <li class="file"><a href="/2021/02/07/project2/">Project 2: Boolean Arithmetic</a></li>  <li class="file"><a href="/2021/02/08/Hello-Time/">Hello, Time!</a></li>  <li class="file"><a href="/2021/02/10/Memory-Units/">Memory Units</a></li>  <li class="file"><a href="/2021/02/12/project3/">Project 3: Sequential Chips</a></li>  <li class="file"><a href="/2021/03/06/Machine-Language/">Machine Language</a></li>  <li class="file"><a href="/2021/03/10/input-and-output/">Input and Output</a></li>  <li class="file"><a href="/2021/03/13/Hack-programming/">Hack Programming</a></li>  <li class="file"><a href="/2021/04/06/project4/">project4</a></li>  <li class="file"><a href="/2021/04/15/Architecture/">5-Computer Architecture</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Projects
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/12/10/IS2140-IR-finalproject/">IR Project -- Movie Script Search</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/11/20/hello-world/">Hexo Memo</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main">
+        <article id="post-project2" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nand2Tetris/">Nand2Tetris</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Coursera/" rel="tag">Coursera</a>, <a class="tag-link-link" href="/tags/Nand2Tetris/" rel="tag">Nand2Tetris</a>, <a class="tag-link-link" href="/tags/Projects/" rel="tag">Projects</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/02/07/project2/">
+            <time datetime="2021-02-07T01:38:22.000Z" itemprop="datePublished">2021-02-07</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/project2.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/project2.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/project2.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/02/07/project2/">Project 2: Boolean Arithmetic</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h2 id="Previous-Topic"><a href="#Previous-Topic" class="headerlink" title="Previous Topic"></a>Previous Topic</h2><p>The previous post has elaborated 3 things we need to implement: <strong>Half Adder</strong>, <strong>Full Adder</strong> and <strong>16-bit Number Adder</strong>. The next is a simpler one: <strong>16-bit Incrementor</strong>.</p>
+<h2 id="Other-Two-Chips"><a href="#Other-Two-Chips" class="headerlink" title="Other Two Chips"></a>Other Two Chips</h2><h3 id="16-bit-Incrementor"><a href="#16-bit-Incrementor" class="headerlink" title="16-bit Incrementor"></a>16-bit Incrementor</h3><p><strong>Tip:</strong> A single bit “0” or “1” can be represented by <code>true</code> or <code>false</code> in HDL.</p>
+<h3 id="ALU"><a href="#ALU" class="headerlink" title="ALU"></a>ALU</h3><p><strong>Tips:</strong> </p>
+<ol>
+<li>This can be built with the chips in Project 1</li>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/02/07/project2/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-Binary-ALU" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nand2Tetris/">Nand2Tetris</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Coursera/" rel="tag">Coursera</a>, <a class="tag-link-link" href="/tags/Nand2Tetris/" rel="tag">Nand2Tetris</a>, <a class="tag-link-link" href="/tags/Notes/" rel="tag">Notes</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/02/06/Binary-ALU/">
+            <time datetime="2021-02-06T01:26:15.000Z" itemprop="datePublished">2021-02-06</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/Binary-ALU.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/Binary-ALU.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/Binary-ALU.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/02/06/Binary-ALU/">Arithmetic Logic Unit (ALU)</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>Adding two numbers in binary representation is pretty simple. Here we are gonna build an Adder for binary numbers.</p>
+<h1 id="Starter-Unit-2-2"><a href="#Starter-Unit-2-2" class="headerlink" title="Starter (Unit 2.2)"></a>Starter (Unit 2.2)</h1><h2 id="Why-does-the-Adder-matter-most"><a href="#Why-does-the-Adder-matter-most" class="headerlink" title="Why does the Adder matter most?"></a>Why does the Adder matter most?</h2><p><strong><u>Adder</strong> + Negative representation = <strong>Subtraction</strong></u></p>
+<p><u><strong>Multiplication</strong> and <strong>Division</strong> are not hardware’s work, but software’s.</u></p>
+<h2 id="Three-steps-to-build-an-Adder"><a href="#Three-steps-to-build-an-Adder" class="headerlink" title="Three steps to build an Adder"></a>Three steps to build an Adder</h2><ul>
+<li>Half Adder: adds 2 bits</li>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/02/06/Binary-ALU/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-Binary-and-arithmetic" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nand2Tetris/">Nand2Tetris</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Coursera/" rel="tag">Coursera</a>, <a class="tag-link-link" href="/tags/Nand2Tetris/" rel="tag">Nand2Tetris</a>, <a class="tag-link-link" href="/tags/Notes/" rel="tag">Notes</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/02/05/Binary-and-arithmetic/">
+            <time datetime="2021-02-05T11:08:31.000Z" itemprop="datePublished">2021-02-05</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/Binary-and-arithmetic.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/Binary-and-arithmetic.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/Binary-and-arithmetic.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/02/05/Binary-and-arithmetic/">Binary and Arithmetic</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h1 id="Binary-and-Arithmetic-Unit-2-1"><a href="#Binary-and-Arithmetic-Unit-2-1" class="headerlink" title="Binary and Arithmetic (Unit 2.1)"></a>Binary and Arithmetic (Unit 2.1)</h1><p>Adding two numbers in binary representation is pretty simple. Here we are gonna build an Adder for binary numbers.</p>
+<h2 id="Why-does-the-Adder-matter-most"><a href="#Why-does-the-Adder-matter-most" class="headerlink" title="Why does the Adder matter most?"></a>Why does the Adder matter most?</h2><p><u><strong>Adder</strong> + Negative representation = <strong>Subtraction</strong></u></p>
+<p><u><strong>Multiplication</strong> and <strong>Division</strong> are not hardware’s work, but software’s.</u></p>
+<h2 id="Three-steps-to-build-an-Adder"><a href="#Three-steps-to-build-an-Adder" class="headerlink" title="Three steps to build an Adder"></a>Three steps to build an Adder</h2><ul>
+<li>Half Adder: adds 2 bits</li>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/02/05/Binary-and-arithmetic/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-project1" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nand2Tetris/">Nand2Tetris</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Coursera/" rel="tag">Coursera</a>, <a class="tag-link-link" href="/tags/Nand2Tetris/" rel="tag">Nand2Tetris</a>, <a class="tag-link-link" href="/tags/Projects/" rel="tag">Projects</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/01/25/project1/">
+            <time datetime="2021-01-25T14:08:14.000Z" itemprop="datePublished">2021-01-25</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/project1.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/project1.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/project1.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/01/25/project1/">Project 1: Boolean Logic</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h2 id="Project-1-Goal-Unit-1-8"><a href="#Project-1-Goal-Unit-1-8" class="headerlink" title="Project 1 Goal (Unit 1.8)"></a>Project 1 Goal (Unit 1.8)</h2><p>Given a NAND, build all the gates.</p>
+<p><img src="/images/Nand2Tetris/the-course-is-about.png" alt="上帝：“去造个计算机。”"></p>
+<p>课上给了Project 1的其中几个chips的讲解。讲了Mux, DMux, And16 和 Mux4Way16。</p>
+<hr>
+<h2 id="Project-1-Overview"><a href="#Project-1-Overview" class="headerlink" title="Project 1 Overview"></a>Project 1 Overview</h2><h3 id="Multiplexor-多路器-or-Mux"><a href="#Multiplexor-多路器-or-Mux" class="headerlink" title="Multiplexor (多路器) or Mux"></a>Multiplexor (多路器) or Mux</h3><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">IN</span> a, b, sel  // <span class="string">&quot;sel&quot;</span> means <span class="string">&quot;selection bit&quot;</span>.</span><br><span class="line"><span class="keyword">OUT</span> <span class="keyword">out</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (sel == <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">out</span> = a</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	<span class="keyword">out</span> = b</span><br></pre></td></tr></table></figure>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/01/25/project1/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-hardware-simulator" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nand2Tetris/">Nand2Tetris</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Coursera/" rel="tag">Coursera</a>, <a class="tag-link-link" href="/tags/Nand2Tetris/" rel="tag">Nand2Tetris</a>, <a class="tag-link-link" href="/tags/Notes/" rel="tag">Notes</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/01/23/hardware-simulator/">
+            <time datetime="2021-01-23T14:15:40.000Z" itemprop="datePublished">2021-01-23</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/hardware-simulator.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/hardware-simulator.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/hardware-simulator.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/01/23/hardware-simulator/">Hardware simulator</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>这两个单元主要是介绍了软件怎么用，怎么test和生成output。<br>简介了Hardware Description Language (HDL) (unit 1.4)</p>
+<h2 id="Hardware-simulator-unit-1-5"><a href="#Hardware-simulator-unit-1-5" class="headerlink" title="Hardware simulator (unit 1.5)"></a>Hardware simulator (unit 1.5)</h2><h3 id="Feel-free-to-“kick-the-tires”"><a href="#Feel-free-to-“kick-the-tires”" class="headerlink" title="Feel free to “kick the tires”!"></a>Feel free to “kick the tires”!</h3><ul>
+<li>The simulator is written in Java.</li>
+<li>The download link is <a target="_blank" rel="noopener" href="https://www.nand2tetris.org/software">here</a>.</li>
+<li>The simulator is invoking in <code>nand2tetris/tools/HardwareSimulator.bat</code>.</li>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/01/23/hardware-simulator/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-Why-Nand" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nand2Tetris/">Nand2Tetris</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Coursera/" rel="tag">Coursera</a>, <a class="tag-link-link" href="/tags/Nand2Tetris/" rel="tag">Nand2Tetris</a>, <a class="tag-link-link" href="/tags/Notes/" rel="tag">Notes</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/01/23/Why-Nand/">
+            <time datetime="2021-01-23T05:25:32.000Z" itemprop="datePublished">2021-01-23</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/Why-Nand.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/Why-Nand.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/Why-Nand.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2021/01/23/Why-Nand/">Why Nand? -- starting Nand2Tetris part I</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>这一章除了复习了一遍以前学过的与非或逻辑门，还介绍了为什么一个<strong>与非门</strong>就能表示所有的逻辑表达式。</p>
+<h1 id="Boolean-logic-unit-1-1-–-1-3"><a href="#Boolean-logic-unit-1-1-–-1-3" class="headerlink" title="Boolean logic (unit 1.1 – 1.3)"></a>Boolean logic (unit 1.1 – 1.3)</h1><h2 id="Algebra-rules"><a href="#Algebra-rules" class="headerlink" title="Algebra rules"></a>Algebra rules</h2><ul>
+<li><p>Commutative laws</p>
+<ul>
+<li>x AND y == y AND x</li>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2021/01/23/Why-Nand/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-IS2140-IR-finalproject" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Projects/">Projects</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-link-link" href="/tags/Projects/" rel="tag">Projects</a>, <a class="tag-link-link" href="/tags/Search-Engine/" rel="tag">Search Engine</a>, <a class="tag-link-link" href="/tags/Spring-MVC/" rel="tag">Spring MVC</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/12/10/IS2140-IR-finalproject/">
+            <time datetime="2020-12-10T06:28:28.000Z" itemprop="datePublished">2020-12-10</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/IS2140-IR-finalproject.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/IS2140-IR-finalproject.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/IS2140-IR-finalproject.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/12/10/IS2140-IR-finalproject/">IR Project -- Movie Script Search</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>This is the final project of INFSCI 2140 Information Storage and Retrieval. We built a search engine of movie lines. Users can input a phrase or a complete sentence and it returns a list of best matched movies with excerpts.</p>
+<h3 id="Teammates"><a href="#Teammates" class="headerlink" title="Teammates"></a>Teammates</h3><ul>
+<li>Zijian Xu</li>
+<li>Long Yan</li>
+</ul>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2020/12/10/IS2140-IR-finalproject/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+        </nav>
+    
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Ada Huang &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

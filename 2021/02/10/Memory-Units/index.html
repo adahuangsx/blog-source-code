@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Memory Units | Ada.h</title>
+    
+    
+        <meta name="keywords" content="Notes,Coursera,Nand2Tetris" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Memory Units (Unit 3.3)Given the 1-bit register we learned in the last post, we can build more things! The basic memory element: Register  We use 16-bit word width to keep generality “Word width” is a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Memory Units">
+<meta property="og:url" content="https://adahuangsx.github.io/2021/02/10/Memory-Units/index.html">
+<meta property="og:site_name" content="Ada.h">
+<meta property="og:description" content="Memory Units (Unit 3.3)Given the 1-bit register we learned in the last post, we can build more things! The basic memory element: Register  We use 16-bit word width to keep generality “Word width” is a">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://adahuangsx.github.io/images/Nand2Tetris/RAMunit.png">
+<meta property="article:published_time" content="2021-02-10T05:08:42.000Z">
+<meta property="article:modified_time" content="2022-11-20T08:04:49.226Z">
+<meta property="article:author" content="Ada Huang">
+<meta property="article:tag" content="Notes">
+<meta property="article:tag" content="Coursera">
+<meta property="article:tag" content="Nand2Tetris">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://adahuangsx.github.io/images/Nand2Tetris/RAMunit.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Ada.h" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Ada.h</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            DDIA
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/05/20/new-post/">三、存储与检索</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Nand2Tetris
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/01/23/Why-Nand/">Why Nand? -- starting Nand2Tetris part I</a></li>  <li class="file"><a href="/2021/01/23/hardware-simulator/">Hardware simulator</a></li>  <li class="file"><a href="/2021/01/25/project1/">Project 1: Boolean Logic</a></li>  <li class="file"><a href="/2021/02/05/Binary-and-arithmetic/">Binary and Arithmetic</a></li>  <li class="file"><a href="/2021/02/06/Binary-ALU/">Arithmetic Logic Unit (ALU)</a></li>  <li class="file"><a href="/2021/02/07/project2/">Project 2: Boolean Arithmetic</a></li>  <li class="file"><a href="/2021/02/08/Hello-Time/">Hello, Time!</a></li>  <li class="file active"><a href="/2021/02/10/Memory-Units/">Memory Units</a></li>  <li class="file"><a href="/2021/02/12/project3/">Project 3: Sequential Chips</a></li>  <li class="file"><a href="/2021/03/06/Machine-Language/">Machine Language</a></li>  <li class="file"><a href="/2021/03/10/input-and-output/">Input and Output</a></li>  <li class="file"><a href="/2021/03/13/Hack-programming/">Hack Programming</a></li>  <li class="file"><a href="/2021/04/06/project4/">project4</a></li>  <li class="file"><a href="/2021/04/15/Architecture/">5-Computer Architecture</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Projects
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/12/10/IS2140-IR-finalproject/">IR Project -- Movie Script Search</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/11/20/hello-world/">Hexo Memo</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-Memory-Units" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nand2Tetris/">Nand2Tetris</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Coursera/" rel="tag">Coursera</a>, <a class="tag-link-link" href="/tags/Nand2Tetris/" rel="tag">Nand2Tetris</a>, <a class="tag-link-link" href="/tags/Notes/" rel="tag">Notes</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/02/10/Memory-Units/">
+            <time datetime="2021-02-10T05:08:42.000Z" itemprop="datePublished">2021-02-10</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/Memory-Units.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/Memory-Units.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/Memory-Units.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Memory Units
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Memory-Units-Unit-3-3"><span class="toc-number">1.</span> <span class="toc-text">Memory Units (Unit 3.3)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-basic-memory-element-Register"><span class="toc-number">1.1.</span> <span class="toc-text">The basic memory element: Register</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Read-Logic"><span class="toc-number">1.1.1.</span> <span class="toc-text">Read Logic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-Logic"><span class="toc-number">1.1.2.</span> <span class="toc-text">Write Logic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-in-the-Hardware-Simulator"><span class="toc-number">1.1.3.</span> <span class="toc-text">How in the Hardware Simulator?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RAM-Unit"><span class="toc-number">1.2.</span> <span class="toc-text">RAM Unit</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Read-amp-Write-Logic"><span class="toc-number">1.2.1.</span> <span class="toc-text">Read &amp; Write Logic</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-family-of-16-bit-RAM-chips"><span class="toc-number">1.3.</span> <span class="toc-text">A family of 16-bit RAM chips</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-%E2%80%9CRandom-Access%E2%80%9D"><span class="toc-number">1.3.1.</span> <span class="toc-text">Why “Random Access”?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Counter"><span class="toc-number">1.4.</span> <span class="toc-text">Counter</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-control-settings"><span class="toc-number">1.4.1.</span> <span class="toc-text">3 control settings:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Inputs-amp-Outputs"><span class="toc-number">1.4.2.</span> <span class="toc-text">Inputs &amp; Outputs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chip-Logic"><span class="toc-number">1.4.3.</span> <span class="toc-text">Chip Logic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-in-the-Hardware-Simulator-1"><span class="toc-number">1.4.4.</span> <span class="toc-text">How in the Hardware Simulator?</span></a></li></ol></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h1 id="Memory-Units-Unit-3-3"><a href="#Memory-Units-Unit-3-3" class="headerlink" title="Memory Units (Unit 3.3)"></a>Memory Units (Unit 3.3)</h1><p>Given the 1-bit register we learned in the last post, we can build more things!</p>
+<h2 id="The-basic-memory-element-Register"><a href="#The-basic-memory-element-Register" class="headerlink" title="The basic memory element: Register"></a>The basic memory element: Register</h2><p><img src="/images/Nand2Tetris/16BitRegister.png" alt="16-bit Register"></p>
+<ul>
+<li>We use 16-bit <strong>word width</strong> to keep generality</li>
+<li>“Word width” is a parameter <code>w</code>, which can be 32-bit, 64-bit, too.</li>
+</ul>
+<p><strong>Register’s State:</strong> the value which is currently stored in the register.</p>
+<hr>
+<h3 id="Read-Logic"><a href="#Read-Logic" class="headerlink" title="Read Logic"></a>Read Logic</h3><p>This is easy, just probe the <code>out</code> and see the outputs.</p>
+<h3 id="Write-Logic"><a href="#Write-Logic" class="headerlink" title="Write Logic"></a>Write Logic</h3><p>Say, we want the register to remember the number <code>123</code>. We can:</p>
+<ol>
+<li>set <code>in = 123</code></li>
+<li>set <code>load = 1</code></li>
+<li>The <code>out</code> will emit <code>123</code> from the next time unit.</li>
+</ol>
+<hr>
+<h3 id="How-in-the-Hardware-Simulator"><a href="#How-in-the-Hardware-Simulator" class="headerlink" title="How in the Hardware Simulator?"></a>How in the Hardware Simulator?</h3><ol>
+<li>Load in the HDL file <code>nand2tetris\tools\builtInChips\DRegister.hdl</code>.</li>
+<li>See the key word <code>BUILTIN</code> and <code>CLOCKED</code>. This chip is actually implemented by a Java class. When the key word <code>CLOCKED</code> is detected, the clock-shaped button will be activated.</li>
+<li>The “Time: __” will tick to “0+” and then tock to “1”. The GUI “D: “ on the right displays the value of DFF (defaulted “0”). However, the output pin takes a complete cycle to emit the newly loaded value.</li>
+</ol>
+<hr>
+<h2 id="RAM-Unit"><a href="#RAM-Unit" class="headerlink" title="RAM Unit"></a>RAM Unit</h2><p><img src="/images/Nand2Tetris/RAMunit.png" alt="RAM Unit"></p>
+<ul>
+<li>Abstractly, we view RAM unit as a sequence of $n$ addressable registers, with address <code>0</code> to <code>n - 1</code>.</li>
+<li>At any point of time, only one register can be selected no matter how many registers exist.</li>
+<li>To represent the address input, it should be $k$ long, where $k = \log_2 n$.</li>
+<li>$n$ has nothing to do with the word width $w$.</li>
+<li><strong>In a word,</strong> RAM is a sequential chip, and it depends on a clock input.</li>
+</ul>
+<h3 id="Read-amp-Write-Logic"><a href="#Read-amp-Write-Logic" class="headerlink" title="Read &amp; Write Logic"></a>Read &amp; Write Logic</h3><p>The same as a single register, except switching the address code.</p>
+<hr>
+<h2 id="A-family-of-16-bit-RAM-chips"><a href="#A-family-of-16-bit-RAM-chips" class="headerlink" title="A family of 16-bit RAM chips"></a>A family of 16-bit RAM chips</h2><p>The family has the same generic architecture as showed above.</p>
+<p>As the number of registers, $n$, goes up, the chips are RAM8, RAM64, RAM32, RAM4K, RAM16K… Accordingly, $k$ is respectively 3, 6, 9, 12, 14…</p>
+<p><strong>Why these 5 particular RAM chips?</strong></p>
+<p>Stay tuned… we need them for the next Hack Computer.</p>
+<hr>
+<h3 id="Why-“Random-Access”"><a href="#Why-“Random-Access”" class="headerlink" title="Why “Random Access”?"></a>Why “Random Access”?</h3><p>RAM stands for “Random Access Memory”, because a magic thing is, once the address code is provide, no matter how many registers, 8 or 8 million, the data is accessible after the same moment.</p>
+<hr>
+<h2 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h2><p>The computer needs a <strong>Program Counter (PC)</strong>  to keep track of the instruction which should be fetched and executed next.</p>
+<p>The PC contains the address of the instruction to fetch.</p>
+<h3 id="3-control-settings"><a href="#3-control-settings" class="headerlink" title="3 control settings:"></a>3 control settings:</h3><ol>
+<li><strong>Reset:</strong> fetch the first instruction        <code>pc = 0</code></li>
+<li><strong>Next:</strong> fetch the next instruction <code>pc++</code></li>
+<li><strong>Goto:</strong> fetch instruction <code>n</code>          <code>pc = n</code></li>
+</ol>
+<h3 id="Inputs-amp-Outputs"><a href="#Inputs-amp-Outputs" class="headerlink" title="Inputs &amp; Outputs"></a>Inputs &amp; Outputs</h3><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">IN</span> <span class="keyword">in</span>[<span class="number">16</span>], laod, inc, reset;</span><br><span class="line"><span class="keyword">OUT</span> <span class="keyword">out</span>[<span class="number">16</span>];</span><br></pre></td></tr></table></figure>
+
+<h3 id="Chip-Logic"><a href="#Chip-Logic" class="headerlink" title="Chip Logic"></a>Chip Logic</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (reset[t] == <span class="number">1</span>)</span><br><span class="line">	out[t + <span class="number">1</span>] = <span class="number">0</span>;  <span class="comment">// reseting the counter</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (load[t] == <span class="number">1</span>)</span><br><span class="line">    out[t + <span class="number">1</span>] = in[t]; <span class="comment">// set the counter to input value</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (inc[t] == <span class="number">1</span>)</span><br><span class="line">    out[t + <span class="number">1</span>]++;    <span class="comment">// increment the counter</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    out[t + <span class="number">1</span>] = out[t];</span><br></pre></td></tr></table></figure>
+
+<h3 id="How-in-the-Hardware-Simulator-1"><a href="#How-in-the-Hardware-Simulator-1" class="headerlink" title="How in the Hardware Simulator?"></a>How in the Hardware Simulator?</h3><ol>
+<li>Load in  the HDL file <code>nand2tetris\tools\builtInChips\PC.hdl</code>.</li>
+<li>Note the priority: <code>reset</code> first, then <code>load</code>, <code>inc</code> at last.</li>
+<li>The <code>&gt;&gt;</code> button can tick the clock automatically every second. </li>
+</ol>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2021/02/12/project3/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Project 3: Sequential Chips
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2021/02/08/Hello-Time/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Hello, Time!</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Ada Huang &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

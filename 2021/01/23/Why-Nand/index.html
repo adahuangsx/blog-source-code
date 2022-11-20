@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Why Nand? -- starting Nand2Tetris part I | Ada.h</title>
+    
+    
+        <meta name="keywords" content="Notes,Coursera,Nand2Tetris" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="这一章除了复习了一遍以前学过的与非或逻辑门，还介绍了为什么一个与非门就能表示所有的逻辑表达式。 Boolean logic (unit 1.1 – 1.3)Algebra rules Commutative laws  x AND y &#x3D;&#x3D; y AND x x OR y &#x3D;&#x3D; y OR x   Associative laws  x AND (y AND z) &#x3D;&#x3D; (x AND y) AND z">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why Nand? -- starting Nand2Tetris part I">
+<meta property="og:url" content="https://adahuangsx.github.io/2021/01/23/Why-Nand/index.html">
+<meta property="og:site_name" content="Ada.h">
+<meta property="og:description" content="这一章除了复习了一遍以前学过的与非或逻辑门，还介绍了为什么一个与非门就能表示所有的逻辑表达式。 Boolean logic (unit 1.1 – 1.3)Algebra rules Commutative laws  x AND y &#x3D;&#x3D; y AND x x OR y &#x3D;&#x3D; y OR x   Associative laws  x AND (y AND z) &#x3D;&#x3D; (x AND y) AND z">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.ytimg.com/vi/kcORYKPL53o/maxresdefault.jpg">
+<meta property="article:published_time" content="2021-01-23T05:25:32.000Z">
+<meta property="article:modified_time" content="2022-11-20T08:04:49.226Z">
+<meta property="article:author" content="Ada Huang">
+<meta property="article:tag" content="Notes">
+<meta property="article:tag" content="Coursera">
+<meta property="article:tag" content="Nand2Tetris">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.ytimg.com/vi/kcORYKPL53o/maxresdefault.jpg">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Ada.h" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Ada.h</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            DDIA
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/05/20/new-post/">三、存储与检索</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Nand2Tetris
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/2021/01/23/Why-Nand/">Why Nand? -- starting Nand2Tetris part I</a></li>  <li class="file"><a href="/2021/01/23/hardware-simulator/">Hardware simulator</a></li>  <li class="file"><a href="/2021/01/25/project1/">Project 1: Boolean Logic</a></li>  <li class="file"><a href="/2021/02/05/Binary-and-arithmetic/">Binary and Arithmetic</a></li>  <li class="file"><a href="/2021/02/06/Binary-ALU/">Arithmetic Logic Unit (ALU)</a></li>  <li class="file"><a href="/2021/02/07/project2/">Project 2: Boolean Arithmetic</a></li>  <li class="file"><a href="/2021/02/08/Hello-Time/">Hello, Time!</a></li>  <li class="file"><a href="/2021/02/10/Memory-Units/">Memory Units</a></li>  <li class="file"><a href="/2021/02/12/project3/">Project 3: Sequential Chips</a></li>  <li class="file"><a href="/2021/03/06/Machine-Language/">Machine Language</a></li>  <li class="file"><a href="/2021/03/10/input-and-output/">Input and Output</a></li>  <li class="file"><a href="/2021/03/13/Hack-programming/">Hack Programming</a></li>  <li class="file"><a href="/2021/04/06/project4/">project4</a></li>  <li class="file"><a href="/2021/04/15/Architecture/">5-Computer Architecture</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Projects
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/12/10/IS2140-IR-finalproject/">IR Project -- Movie Script Search</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/11/20/hello-world/">Hexo Memo</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-Why-Nand" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nand2Tetris/">Nand2Tetris</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Coursera/" rel="tag">Coursera</a>, <a class="tag-link-link" href="/tags/Nand2Tetris/" rel="tag">Nand2Tetris</a>, <a class="tag-link-link" href="/tags/Notes/" rel="tag">Notes</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/01/23/Why-Nand/">
+            <time datetime="2021-01-23T05:25:32.000Z" itemprop="datePublished">2021-01-23</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/Why-Nand.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/Why-Nand.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/Why-Nand.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Why Nand? -- starting Nand2Tetris part I
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Boolean-logic-unit-1-1-%E2%80%93-1-3"><span class="toc-number">1.</span> <span class="toc-text">Boolean logic (unit 1.1 – 1.3)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Algebra-rules"><span class="toc-number">1.1.</span> <span class="toc-text">Algebra rules</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Truth-table-to-Boolean-Expression"><span class="toc-number">1.2.</span> <span class="toc-text">Truth table to Boolean Expression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#To-prove-Why-Nand"><span class="toc-number">1.3.</span> <span class="toc-text">To prove Why-Nand</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Theorem"><span class="toc-number">1.3.1.</span> <span class="toc-text">The Theorem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Here-comes-the-Nand"><span class="toc-number">1.3.2.</span> <span class="toc-text">Here comes the Nand</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nand-takes-over"><span class="toc-number">1.3.3.</span> <span class="toc-text">Nand takes over.</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-number">2.</span> <span class="toc-text">References</span></a></li></ol>
+                </div>
+            
+        
+        
+            <p>这一章除了复习了一遍以前学过的与非或逻辑门，还介绍了为什么一个<strong>与非门</strong>就能表示所有的逻辑表达式。</p>
+<h1 id="Boolean-logic-unit-1-1-–-1-3"><a href="#Boolean-logic-unit-1-1-–-1-3" class="headerlink" title="Boolean logic (unit 1.1 – 1.3)"></a>Boolean logic (unit 1.1 – 1.3)</h1><h2 id="Algebra-rules"><a href="#Algebra-rules" class="headerlink" title="Algebra rules"></a>Algebra rules</h2><ul>
+<li><p>Commutative laws</p>
+<ul>
+<li>x AND y == y AND x</li>
+<li>x OR y == y OR x</li>
+</ul>
+</li>
+<li><p>Associative laws</p>
+<ul>
+<li>x AND (y AND z) == (x AND y) AND z</li>
+<li>x OR (y OR z) == (x OR y) OR z</li>
+</ul>
+</li>
+<li><p>Distributive laws</p>
+<ul>
+<li>x <strong>AND</strong> (y OR z) == (x AND y) OR (x AND z)</li>
+<li>x <strong>OR</strong> (y AND z) == (x OR y) AND (x OR z)</li>
+</ul>
+</li>
+<li><p>De Morgan laws</p>
+<ul>
+<li>NOT (x AND y) == NOT (x) OR NOT (y)</li>
+<li>NOT (x OR y) == NOT (x) AND NOT (y)</li>
+</ul>
+</li>
+<li><p>Other rules</p>
+<ul>
+<li>x AND x == x</li>
+<li>x OR x == x</li>
+</ul>
+</li>
+</ul>
+<h2 id="Truth-table-to-Boolean-Expression"><a href="#Truth-table-to-Boolean-Expression" class="headerlink" title="Truth table to Boolean Expression"></a>Truth table to Boolean Expression</h2><ol>
+<li><p><strong>Focus all the “1” results</strong></p>
+</li>
+<li><p><strong>write down all the expressions which only apply to the single rows in the truth table</strong></p>
+</li>
+<li><p><strong>OR these expressions together</strong></p>
+<p><img src="/images/Nand2Tetris/table2expression.png" alt="Truth table to Boolean Expression"></p>
+</li>
+<li><p><strong>Simplify it.</strong></p>
+<p>In the example above, give a close look at the first two clauses: we have both possibilities for “y” and the same fixed value for “x”. So, we can combine the two clauses, which does not ask about y and only ask about “NOT(x)” and “NOT(z)”.</p>
+<p>Then keep doing this.</p>
+<p><img src="/images/Nand2Tetris/simplify%20expression.png" alt="Simplify it"></p>
+<p><strong>Note that</strong> finding the shortest expressions is not easy for humans nor for algorithms, because this is a NP-hard problem.</p>
+</li>
+</ol>
+<hr>
+<h2 id="To-prove-Why-Nand"><a href="#To-prove-Why-Nand" class="headerlink" title="To prove Why-Nand"></a>To prove Why-Nand</h2><h3 id="The-Theorem"><a href="#The-Theorem" class="headerlink" title="The Theorem"></a>The Theorem</h3><p>Any Boolean function can be represented using an expression only containing AND and NOT operations.</p>
+<p>Then, we introduce the NAND gate, which is proved to be the <strong>only needed gates</strong>.</p>
+<h3 id="Here-comes-the-Nand"><a href="#Here-comes-the-Nand" class="headerlink" title="Here comes the Nand"></a>Here comes the Nand</h3><p>x NAND y == NOT (x AND y)</p>
+<p><u><em>“NAND” is short for “NOT AND”.</em></u></p>
+<h3 id="Nand-takes-over"><a href="#Nand-takes-over" class="headerlink" title="Nand takes over."></a>Nand takes over.</h3><ol>
+<li>NOT (x) == x NAND x</li>
+<li>x AND y == NOT (x NAND y)</li>
+</ol>
+<hr>
+<p>The gate interface in unique. There is only one way to describe its functionality. Meantime, there are multiple implementations that realize the same obstruction. This duality of <strong>“one obstruction, many different implementations”</strong> is very typical in Computer Science.</p>
+<p>所以这里解答了我对计算机的一个疑问，那就是不必纠结一个复杂的功能最底层到底是怎么实现的，而是像这门课一样，分层地理解。了解了一层以后，就把这层的知识作为已知，再去了解上面一层。</p>
+<hr>
+<p>补充一个后面答疑问到的几个关于Nand的问题：</p>
+<p>Q. 用NAND以外别的gate做计算机的基础行不行？<br>A. 当然可以，比如<code>NOR (NOT OR)</code>。这就像物理中用不同的坐标系一样。只不过NAND相比于其他gate造价相对便宜。</p>
+<p>Q. 这门课直接把Nand拿来用，但是黑盒里面是怎么实现的呢？<br>A. 这更像是一个物理问题，不属于这门课的范围。但是很容易举出一个实现的例子：<a target="_blank" rel="noopener" href="https://www.51dzw.com/embed/embed_83634.html">用NMOS实现与非门电路</a></p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.nand2tetris.org/">Nand2Tetris home page</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.coursera.org/learn/build-a-computer">Nand2Tetris Coursera link</a></li>
+</ul>
+</blockquote>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2021/01/23/hardware-simulator/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Hardware simulator
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2020/12/10/IS2140-IR-finalproject/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">IR Project -- Movie Script Search</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Ada Huang &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

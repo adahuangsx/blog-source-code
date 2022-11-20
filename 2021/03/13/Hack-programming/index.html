@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Hack Programming | Ada.h</title>
+    
+    
+        <meta name="keywords" content="Notes,Coursera,Nand2Tetris" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Working with Registers and Memory (Unit 4.6)Let’s recall D: data register A: address &#x2F; data register  M: the currently selected memory register: M &#x3D; RAM[A]  Typical operations1234567891011121314151617">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hack Programming">
+<meta property="og:url" content="https://adahuangsx.github.io/2021/03/13/Hack-programming/index.html">
+<meta property="og:site_name" content="Ada.h">
+<meta property="og:description" content="Working with Registers and Memory (Unit 4.6)Let’s recall D: data register A: address &#x2F; data register  M: the currently selected memory register: M &#x3D; RAM[A]  Typical operations1234567891011121314151617">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://adahuangsx.github.io/images/Nand2Tetris/hackHardware.png">
+<meta property="article:published_time" content="2021-03-13T08:21:12.000Z">
+<meta property="article:modified_time" content="2022-11-20T08:04:49.225Z">
+<meta property="article:author" content="Ada Huang">
+<meta property="article:tag" content="Notes">
+<meta property="article:tag" content="Coursera">
+<meta property="article:tag" content="Nand2Tetris">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://adahuangsx.github.io/images/Nand2Tetris/hackHardware.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Ada.h" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Ada.h</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            DDIA
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/05/20/new-post/">三、存储与检索</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Nand2Tetris
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/01/23/Why-Nand/">Why Nand? -- starting Nand2Tetris part I</a></li>  <li class="file"><a href="/2021/01/23/hardware-simulator/">Hardware simulator</a></li>  <li class="file"><a href="/2021/01/25/project1/">Project 1: Boolean Logic</a></li>  <li class="file"><a href="/2021/02/05/Binary-and-arithmetic/">Binary and Arithmetic</a></li>  <li class="file"><a href="/2021/02/06/Binary-ALU/">Arithmetic Logic Unit (ALU)</a></li>  <li class="file"><a href="/2021/02/07/project2/">Project 2: Boolean Arithmetic</a></li>  <li class="file"><a href="/2021/02/08/Hello-Time/">Hello, Time!</a></li>  <li class="file"><a href="/2021/02/10/Memory-Units/">Memory Units</a></li>  <li class="file"><a href="/2021/02/12/project3/">Project 3: Sequential Chips</a></li>  <li class="file"><a href="/2021/03/06/Machine-Language/">Machine Language</a></li>  <li class="file"><a href="/2021/03/10/input-and-output/">Input and Output</a></li>  <li class="file active"><a href="/2021/03/13/Hack-programming/">Hack Programming</a></li>  <li class="file"><a href="/2021/04/06/project4/">project4</a></li>  <li class="file"><a href="/2021/04/15/Architecture/">5-Computer Architecture</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Projects
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/12/10/IS2140-IR-finalproject/">IR Project -- Movie Script Search</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/11/20/hello-world/">Hexo Memo</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-Hack-programming" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nand2Tetris/">Nand2Tetris</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Coursera/" rel="tag">Coursera</a>, <a class="tag-link-link" href="/tags/Nand2Tetris/" rel="tag">Nand2Tetris</a>, <a class="tag-link-link" href="/tags/Notes/" rel="tag">Notes</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/03/13/Hack-programming/">
+            <time datetime="2021-03-13T08:21:12.000Z" itemprop="datePublished">2021-03-13</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/Hack-programming.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/Hack-programming.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/Hack-programming.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Hack Programming
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Working-with-Registers-and-Memory-Unit-4-6"><span class="toc-number">1.</span> <span class="toc-text">Working with Registers and Memory (Unit 4.6)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Let%E2%80%99s-recall"><span class="toc-number">1.0.1.</span> <span class="toc-text">Let’s recall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Typical-operations"><span class="toc-number">1.0.2.</span> <span class="toc-text">Typical operations</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-end-the-program-properly"><span class="toc-number">1.1.</span> <span class="toc-text">How to end the program properly?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Build-in-Symbols"><span class="toc-number">1.2.</span> <span class="toc-text">Build-in Symbols</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#virtual-registers"><span class="toc-number">1.2.1.</span> <span class="toc-text">virtual registers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Base-Addresses-of-I-O-Maps"><span class="toc-number">1.2.2.</span> <span class="toc-text">Base Addresses of I&#x2F;O Maps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Remaining-symbols"><span class="toc-number">1.2.3.</span> <span class="toc-text">Remaining symbols</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Branching"><span class="toc-number">2.</span> <span class="toc-text">Branching</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Variables-Unit-4-7"><span class="toc-number">3.</span> <span class="toc-text">Variables (Unit 4.7)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Iteration"><span class="toc-number">4.</span> <span class="toc-text">Iteration</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pointers-Unit-4-8"><span class="toc-number">5.</span> <span class="toc-text">Pointers (Unit 4.8)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Input-amp-Output"><span class="toc-number">6.</span> <span class="toc-text">Input &amp; Output</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Example-Rectangle-Drawing"><span class="toc-number">6.1.</span> <span class="toc-text">Example: Rectangle Drawing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Coding-Practice"><span class="toc-number">6.1.1.</span> <span class="toc-text">Coding Practice:</span></a></li></ol></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h1 id="Working-with-Registers-and-Memory-Unit-4-6"><a href="#Working-with-Registers-and-Memory-Unit-4-6" class="headerlink" title="Working with Registers and Memory (Unit 4.6)"></a>Working with Registers and Memory (Unit 4.6)</h1><h3 id="Let’s-recall"><a href="#Let’s-recall" class="headerlink" title="Let’s recall"></a>Let’s recall</h3><ul>
+<li>D: data register</li>
+<li>A: address / data register </li>
+<li>M: the currently selected memory register: <code>M = RAM[A]</code></li>
+</ul>
+<h3 id="Typical-operations"><a href="#Typical-operations" class="headerlink" title="Typical operations"></a>Typical operations</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// D=10</span></span><br><span class="line">@<span class="number">10</span></span><br><span class="line">D=A</span><br><span class="line"><span class="comment">// D++</span></span><br><span class="line">D=D+<span class="number">1</span></span><br><span class="line"><span class="comment">// D=RAM[17]</span></span><br><span class="line">@<span class="number">17</span></span><br><span class="line">D=M</span><br><span class="line"><span class="comment">// RAM[17]=D</span></span><br><span class="line">@<span class="number">17</span></span><br><span class="line">M=D</span><br><span class="line"><span class="comment">// RAM[17]=10</span></span><br><span class="line">@<span class="number">10</span></span><br><span class="line">D=A</span><br><span class="line">@<span class="number">17</span></span><br><span class="line">M=D</span><br><span class="line"><span class="comment">// RAM[5] = RAM[3]</span></span><br><span class="line">@<span class="number">3</span></span><br><span class="line">D=M</span><br><span class="line">@<span class="number">5</span></span><br><span class="line">M=D</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="How-to-end-the-program-properly"><a href="#How-to-end-the-program-properly" class="headerlink" title="How to end the program properly?"></a>How to end the program properly?</h2><p>The program will keep executing even if the instructions are run out (blank instructions). An evil hacker will put some uncontrollable codes to slide the flow of control to a memory area they can control.</p>
+<p>This attack is called <strong>NOP slide</strong>, Null Instructions or Null Opcodes. </p>
+<p>Note that the computer can never stand still. It is always doing something even when the keyboard is idle. There are many processes running in the back ground. <strong>A good practice</strong> is to end everything in the program with an infinite loop, like:</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">@<span class="number">4</span>     // A - <span class="string">&quot;4&quot;</span> because this <span class="literal">line</span> <span class="keyword">is</span> ROM[<span class="number">4</span>]</span><br><span class="line"><span class="number">0</span>;JMP  // <span class="string">&quot;0&quot;</span> <span class="keyword">is</span> always <span class="string">&quot;== 0&quot;</span>, so it <span class="keyword">is</span> stuck <span class="keyword">in</span> these <span class="number">2</span> lines.</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="Build-in-Symbols"><a href="#Build-in-Symbols" class="headerlink" title="Build-in Symbols"></a>Build-in Symbols</h2><h3 id="virtual-registers"><a href="#virtual-registers" class="headerlink" title="virtual registers"></a>virtual registers</h3><p>Hack has 16 virtual registers from <code>R0</code> to <code>R15</code>. They have exactly the same value as its position: <code>R5</code> has the value of <code>5</code>. </p>
+<p><strong>The reason</strong> we need this is: the A-instruction has 2 functionalities, so it may get confusing sometimes. We will not know if it is an address or a number until seeing the next instructions. Therefore, we give it different labels:</p>
+<p>![](D:\Winter 20\blog\themes\wikitten\source\images\Nand2Tetris\why virtual registers.png) </p>
+<p>PS: Hack is case-sensitive. “R5” != “r5”</p>
+<h3 id="Base-Addresses-of-I-O-Maps"><a href="#Base-Addresses-of-I-O-Maps" class="headerlink" title="Base Addresses of I/O Maps"></a>Base Addresses of I/O Maps</h3><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SCREEN   <span class="number">16384</span></span><br><span class="line">KBD      <span class="number">24576</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Remaining-symbols"><a href="#Remaining-symbols" class="headerlink" title="Remaining symbols"></a>Remaining symbols</h3><p>They are used in the implementation of the Hack virtual machine.</p>
+<hr>
+<h1 id="Branching"><a href="#Branching" class="headerlink" title="Branching"></a>Branching</h1><p>The code of branching is taught in the C-instruction <code>jump</code> unit.</p>
+<p>To make the Hack assembly code more readable, we introduce the label. (就是代码块的跳转标记). Its syntax is:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">		<span class="meta">@LABEL</span>		<span class="comment">// use the label</span></span><br><span class="line">		D;JGT</span><br><span class="line">		...</span><br><span class="line">(LABEL)	 @<span class="number">233</span>		<span class="comment">// declare the label</span></span><br><span class="line">		M=D</span><br><span class="line">		...</span><br></pre></td></tr></table></figure>
+
+<p><code>@LABEL</code> translates to <code>@n</code>, where  <code>n</code> is the instruction number following the (<code>LABEL</code>) declaration.</p>
+<p>Similar to <code>goto</code>.</p>
+<hr>
+<h1 id="Variables-Unit-4-7"><a href="#Variables-Unit-4-7" class="headerlink" title="Variables (Unit 4.7)"></a>Variables (Unit 4.7)</h1><p>In Hack, we only have 1 type of variables, which is 16-bit.</p>
+<p> For example, there is a variable called “temp”:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Program: Flip.asm flips the values of RAM[0] and RAM[1]:</span></span><br><span class="line"><span class="comment">// temp = R1</span></span><br><span class="line"><span class="comment">// R1 = R0 </span></span><br><span class="line"><span class="comment">// R0 = temp</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">@temp</span></span><br><span class="line">M=D <span class="comment">// temp = R1</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">@temp</span></span><br><span class="line">D=M</span><br><span class="line"><span class="meta">@R0</span></span><br><span class="line">M=D <span class="comment">// R0 = temp</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>That is how <code>@temp</code> works:</strong> Find some available register, and use it to represent the variable <code>temp</code>. So from now on, every occurrence of <code>@temp</code> will be translated into <code>@n</code>.</p>
+<p>Another nice virtue is that the program is <strong>relocatable</strong> code, as long as the base address is known.</p>
+<p><strong>Note:</strong> 怎么判断<code>@</code> 符操作是branching还是variable？<br>variable没有<code>(LABEL)</code> 这样的declaration，而branching一定有代码段中的标记。variable的声明在变量区。</p>
+<hr>
+<h1 id="Iteration"><a href="#Iteration" class="headerlink" title="Iteration"></a>Iteration</h1><p><strong>Recommended Tips:</strong></p>
+<ul>
+<li>Write Pseudo code first, then translate it into machine language;</li>
+<li>Debug by simulating with <strong>trace table</strong>;</li>
+</ul>
+<hr>
+<h1 id="Pointers-Unit-4-8"><a href="#Pointers-Unit-4-8" class="headerlink" title="Pointers (Unit 4.8)"></a>Pointers (Unit 4.8)</h1><p>![](D:\Winter 20\blog\themes\wikitten\source\images\Nand2Tetris\pointers in one slide.png)</p>
+<p>The typical operation is <strong>the red instruction</strong>: set the address register to a given value. Before this unit, <code>A</code> is never on the left of the equation.</p>
+<p><code>A = xx</code> 就可以看做是<code>@xx</code>，这样后面一行如果看到<code>M</code>，就更容易理解了。</p>
+<hr>
+<h1 id="Input-amp-Output"><a href="#Input-amp-Output" class="headerlink" title="Input &amp; Output"></a>Input &amp; Output</h1><h2 id="Example-Rectangle-Drawing"><a href="#Example-Rectangle-Drawing" class="headerlink" title="Example: Rectangle Drawing"></a>Example: Rectangle Drawing</h2><h3 id="Coding-Practice"><a href="#Coding-Practice" class="headerlink" title="Coding Practice:"></a>Coding Practice:</h3><p>赋值常数给变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SCREEN</span></span><br><span class="line">D=A</span><br><span class="line"><span class="meta">@addr</span></span><br><span class="line">M=D</span><br><span class="line"><span class="comment">// addr = 16384</span></span><br></pre></td></tr></table></figure>
+
+<p>赋值简单的值（如初始化）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@i</span></span><br><span class="line">M=<span class="number">0</span></span><br><span class="line"><span class="comment">// i = 0   </span></span><br><span class="line"><span class="comment">// ??? 为什么不是RAM[i] = 0?</span></span><br><span class="line"><span class="comment">// 解答：i在这里是变量，自动分配一个地址，比如n，给这个变量。所以现在i表示的是n那个数字。</span></span><br></pre></td></tr></table></figure>
+
+<p>取地址赋值（唯一的A在等式左边）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@addr</span> 	<span class="comment">// A = addr</span></span><br><span class="line">A=M		<span class="comment">// 此时M为RAM[addr], 即@RAM[addr]</span></span><br><span class="line">M=-<span class="number">1</span>	<span class="comment">// *addr = -1</span></span><br><span class="line"><span class="comment">// RAM[addr] = 1111111111111111</span></span><br></pre></td></tr></table></figure>
+
+
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2021/04/06/project4/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    project4
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2021/03/10/input-and-output/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Input and Output</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Ada Huang &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Project 2: Boolean Arithmetic | Ada.h</title>
+    
+    
+        <meta name="keywords" content="Coursera,Nand2Tetris,Projects" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Previous TopicThe previous post has elaborated 3 things we need to implement: Half Adder, Full Adder and 16-bit Number Adder. The next is a simpler one: 16-bit Incrementor. Other Two Chips16-bit Incre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Project 2: Boolean Arithmetic">
+<meta property="og:url" content="https://adahuangsx.github.io/2021/02/07/project2/index.html">
+<meta property="og:site_name" content="Ada.h">
+<meta property="og:description" content="Previous TopicThe previous post has elaborated 3 things we need to implement: Half Adder, Full Adder and 16-bit Number Adder. The next is a simpler one: 16-bit Incrementor. Other Two Chips16-bit Incre">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.ytimg.com/vi/kcORYKPL53o/maxresdefault.jpg">
+<meta property="article:published_time" content="2021-02-07T01:38:22.000Z">
+<meta property="article:modified_time" content="2022-11-20T08:04:49.228Z">
+<meta property="article:author" content="Ada Huang">
+<meta property="article:tag" content="Coursera">
+<meta property="article:tag" content="Nand2Tetris">
+<meta property="article:tag" content="Projects">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.ytimg.com/vi/kcORYKPL53o/maxresdefault.jpg">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Ada.h" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Ada.h</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            DDIA
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/05/20/new-post/">三、存储与检索</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Nand2Tetris
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/01/23/Why-Nand/">Why Nand? -- starting Nand2Tetris part I</a></li>  <li class="file"><a href="/2021/01/23/hardware-simulator/">Hardware simulator</a></li>  <li class="file"><a href="/2021/01/25/project1/">Project 1: Boolean Logic</a></li>  <li class="file"><a href="/2021/02/05/Binary-and-arithmetic/">Binary and Arithmetic</a></li>  <li class="file"><a href="/2021/02/06/Binary-ALU/">Arithmetic Logic Unit (ALU)</a></li>  <li class="file active"><a href="/2021/02/07/project2/">Project 2: Boolean Arithmetic</a></li>  <li class="file"><a href="/2021/02/08/Hello-Time/">Hello, Time!</a></li>  <li class="file"><a href="/2021/02/10/Memory-Units/">Memory Units</a></li>  <li class="file"><a href="/2021/02/12/project3/">Project 3: Sequential Chips</a></li>  <li class="file"><a href="/2021/03/06/Machine-Language/">Machine Language</a></li>  <li class="file"><a href="/2021/03/10/input-and-output/">Input and Output</a></li>  <li class="file"><a href="/2021/03/13/Hack-programming/">Hack Programming</a></li>  <li class="file"><a href="/2021/04/06/project4/">project4</a></li>  <li class="file"><a href="/2021/04/15/Architecture/">5-Computer Architecture</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Projects
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/12/10/IS2140-IR-finalproject/">IR Project -- Movie Script Search</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/11/20/hello-world/">Hexo Memo</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-project2" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nand2Tetris/">Nand2Tetris</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Coursera/" rel="tag">Coursera</a>, <a class="tag-link-link" href="/tags/Nand2Tetris/" rel="tag">Nand2Tetris</a>, <a class="tag-link-link" href="/tags/Projects/" rel="tag">Projects</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/02/07/project2/">
+            <time datetime="2021-02-07T01:38:22.000Z" itemprop="datePublished">2021-02-07</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/project2.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/project2.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/project2.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Project 2: Boolean Arithmetic
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Previous-Topic"><span class="toc-number">1.</span> <span class="toc-text">Previous Topic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other-Two-Chips"><span class="toc-number">2.</span> <span class="toc-text">Other Two Chips</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#16-bit-Incrementor"><span class="toc-number">2.1.</span> <span class="toc-text">16-bit Incrementor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ALU"><span class="toc-number">2.2.</span> <span class="toc-text">ALU</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Some-Questions-This-Week"><span class="toc-number">3.</span> <span class="toc-text">Some Questions This Week</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#While-doing-it-%EF%BC%88%E6%84%9F%E6%83%B3%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">While doing it （感想及常见错误）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="Previous-Topic"><a href="#Previous-Topic" class="headerlink" title="Previous Topic"></a>Previous Topic</h2><p>The previous post has elaborated 3 things we need to implement: <strong>Half Adder</strong>, <strong>Full Adder</strong> and <strong>16-bit Number Adder</strong>. The next is a simpler one: <strong>16-bit Incrementor</strong>.</p>
+<h2 id="Other-Two-Chips"><a href="#Other-Two-Chips" class="headerlink" title="Other Two Chips"></a>Other Two Chips</h2><h3 id="16-bit-Incrementor"><a href="#16-bit-Incrementor" class="headerlink" title="16-bit Incrementor"></a>16-bit Incrementor</h3><p><strong>Tip:</strong> A single bit “0” or “1” can be represented by <code>true</code> or <code>false</code> in HDL.</p>
+<h3 id="ALU"><a href="#ALU" class="headerlink" title="ALU"></a>ALU</h3><p><strong>Tips:</strong> </p>
+<ol>
+<li>This can be built with the chips in Project 1</li>
+<li>Only less than 20 lines of HDL code are needed.</li>
+<li>No need to use my own implementation in Project 1, but instead, the best practice is to use their built-in versions. <ul>
+<li>(Make sure to use them like “Mux” or “And” precisely, because the simulator always looks for the chips in the current directory, and then if finds nothing, it will kick in and use the automatic built-in version at last.)</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="Some-Questions-This-Week"><a href="#Some-Questions-This-Week" class="headerlink" title="Some Questions This Week"></a>Some Questions This Week</h2><p><strong>Q. We have built nearly 20 chips. Are they standard? or are they typically used in the computer systems?</strong><br>A. Yes, the gates this week like Half Adder and Full Adder are standard, as well as the 16 chips built in the last project like “Mux” and “Xor”, except ALU, which is extremely simplified from the actually used one. So, this ALU is a bit unique among usual ALUs.</p>
+<p><strong>Q. How does the ALU we built operates multiplication and division?</strong><br>A. There is no problem to write HDL code that specifies chips to carry out these operations by working directly on bits. In fact, there are some elegant algorithms to do that. Designers are free to decide how much functionality to put into each layers. In this course, we put multiplication and division into the software that runs on the top of the computer to keep ALU simple.</p>
+<p>Also, this is another trade-off since hardware functionality runs much faster but costly. However, the high-level programmers will not feel this difference.</p>
+<p><strong>Q. Is the ALU efficient?</strong><br>A. Almost everything we build is efficient, but some optimization is still possible. For example, the adder. Say there is a 32-bit adder, and to compute all the 32 bits, we need to connect all of the 32 Full Adders with the carries along the significance ladder. </p>
+<p>But don’t forget that a Full Adder is made of 3-4 other chips. So, the total <strong>delay</strong> would be $32 * 3 $. One optimization is the carry that goes one of the Full Adders at the top. We can, instead, compute this MSB carry in a more efficient way. This is called <strong>“carry look ahead”</strong>.</p>
+<p><strong>Q. Why using the built-in chips, not the ones we built in the Project 1?</strong><br>A. You are more than welcomed to use them. However, using built-in chips is good for unit-testing and prevent the bugs from being messed up.    </p>
+<hr>
+<h2 id="While-doing-it-（感想及常见错误）"><a href="#While-doing-it-（感想及常见错误）" class="headerlink" title="While doing it （感想及常见错误）"></a>While doing it （感想及常见错误）</h2><p>这次的作业感觉就是上次的延伸。只有5个chip，而且是前4个adder层层递进。</p>
+<p>最后一个ALU是难点，重要的是要把上一次作业的chips利用起来。比如对于<code>zx</code>或<code>nx</code>，如何通过一个bit是零还是壹而输出不同的值，则应该想到Mux（多路器）。</p>
+<p>还有仍然要小心”sub-bus“的错误，那就是<code>[xx..xx]</code>只能出现在<code>..., out=out)</code> 中的等号左边而不能pipe到其他chip的<code>(in=...,)</code>里，而形如<code>..., out=out[0..7])</code>则会报<code>Sub bus of an internal node may not be used</code>的错误。例子如下：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SomeGate(..., <span class="keyword">out</span>=foo);</span><br><span class="line">Or8Way(<span class="keyword">in</span>=foo[<span class="number">0</span>..<span class="number">7</span>], <span class="keyword">out</span>=p1);</span><br><span class="line">Or8Way(<span class="keyword">in</span>=foo[<span class="number">8</span>..<span class="number">15</span>], <span class="keyword">out</span>=p2); // <span class="literal">ERROR</span></span><br></pre></td></tr></table></figure>
+
+<p>这样是不对的，因为<code>foo</code>是个中间产生的变量名，它在HDL中不能用sub-bus的方式作为另一个chip的“in=”。</p>
+<p>Instead，</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SomeGate(..., <span class="keyword">out</span>[<span class="number">0</span>..<span class="number">7</span>]=foo1);</span><br><span class="line">SomeGate(..., <span class="keyword">out</span>[<span class="number">8</span>..<span class="number">15</span>]=foo2);</span><br><span class="line">Or8Way(<span class="keyword">in</span>=foo1, <span class="keyword">out</span>=p1);</span><br><span class="line">Or8Way(<span class="keyword">in</span>=foo2, <span class="keyword">out</span>=p2);</span><br></pre></td></tr></table></figure>
+
+<p>应该像上面这样把2个narrower buses分别输出。代码的意思是“foo1接收了out的[0..7]位并被赋值成了8-bit的值”。</p>
+<p>也可以像这样把多个narrowing合并起来：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SomeGate(..., <span class="keyword">out</span>[<span class="number">0</span>..<span class="number">7</span>]=foo1, <span class="keyword">out</span>[<span class="number">8</span>..<span class="number">15</span>]=foo2);</span><br></pre></td></tr></table></figure>
+
+<p>以上可以参照<a target="_blank" rel="noopener" href="https://www.nand2tetris.org/hdl-survival-guide">Survival Guide</a> 中的“sub-busing”部分。</p>
+<hr>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.nand2tetris.org/project02">Project 2 Main page</a></li>
+<li><a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1dPj4XNby9iuAs-47U9k3xtYy9hJ-ET0T/view">The HDL Guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1IsDnH0t7q_Im491LQ7_5_ajV0CokRbwR/view">The Hack Chip Set API</a></li>
+</ul>
+</blockquote>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2021/02/08/Hello-Time/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Hello, Time!
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2021/02/06/Binary-ALU/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Arithmetic Logic Unit (ALU)</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Ada Huang &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

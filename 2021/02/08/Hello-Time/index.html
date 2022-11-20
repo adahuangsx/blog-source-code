@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Hello, Time! | Ada.h</title>
+    
+    
+        <meta name="keywords" content="Notes,Coursera,Nand2Tetris" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Sequential Logic (Unit 3.1)In this unit we introduce the issue of time into the system, since we didn’t have the notion of change before. To simplify the concept, we divide time into atomic pieces, wh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello, Time!">
+<meta property="og:url" content="https://adahuangsx.github.io/2021/02/08/Hello-Time/index.html">
+<meta property="og:site_name" content="Ada.h">
+<meta property="og:description" content="Sequential Logic (Unit 3.1)In this unit we introduce the issue of time into the system, since we didn’t have the notion of change before. To simplify the concept, we divide time into atomic pieces, wh">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://adahuangsx.github.io/images/Nand2Tetris/SequentialChip.png">
+<meta property="article:published_time" content="2021-02-08T08:06:54.000Z">
+<meta property="article:modified_time" content="2022-11-20T08:04:49.225Z">
+<meta property="article:author" content="Ada Huang">
+<meta property="article:tag" content="Notes">
+<meta property="article:tag" content="Coursera">
+<meta property="article:tag" content="Nand2Tetris">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://adahuangsx.github.io/images/Nand2Tetris/SequentialChip.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Ada.h" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Ada.h</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            DDIA
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/05/20/new-post/">三、存储与检索</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Nand2Tetris
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2021/01/23/Why-Nand/">Why Nand? -- starting Nand2Tetris part I</a></li>  <li class="file"><a href="/2021/01/23/hardware-simulator/">Hardware simulator</a></li>  <li class="file"><a href="/2021/01/25/project1/">Project 1: Boolean Logic</a></li>  <li class="file"><a href="/2021/02/05/Binary-and-arithmetic/">Binary and Arithmetic</a></li>  <li class="file"><a href="/2021/02/06/Binary-ALU/">Arithmetic Logic Unit (ALU)</a></li>  <li class="file"><a href="/2021/02/07/project2/">Project 2: Boolean Arithmetic</a></li>  <li class="file active"><a href="/2021/02/08/Hello-Time/">Hello, Time!</a></li>  <li class="file"><a href="/2021/02/10/Memory-Units/">Memory Units</a></li>  <li class="file"><a href="/2021/02/12/project3/">Project 3: Sequential Chips</a></li>  <li class="file"><a href="/2021/03/06/Machine-Language/">Machine Language</a></li>  <li class="file"><a href="/2021/03/10/input-and-output/">Input and Output</a></li>  <li class="file"><a href="/2021/03/13/Hack-programming/">Hack Programming</a></li>  <li class="file"><a href="/2021/04/06/project4/">project4</a></li>  <li class="file"><a href="/2021/04/15/Architecture/">5-Computer Architecture</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Projects
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2020/12/10/IS2140-IR-finalproject/">IR Project -- Movie Script Search</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/11/20/hello-world/">Hexo Memo</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-Hello-Time" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nand2Tetris/">Nand2Tetris</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Coursera/" rel="tag">Coursera</a>, <a class="tag-link-link" href="/tags/Nand2Tetris/" rel="tag">Nand2Tetris</a>, <a class="tag-link-link" href="/tags/Notes/" rel="tag">Notes</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2021/02/08/Hello-Time/">
+            <time datetime="2021-02-08T08:06:54.000Z" itemprop="datePublished">2021-02-08</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/Hello-Time.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/Hello-Time.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a target="_blank" rel="noopener" href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/Hello-Time.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Hello, Time!
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sequential-Logic-Unit-3-1"><span class="toc-number">1.</span> <span class="toc-text">Sequential Logic (Unit 3.1)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Clock-Integer-Time-Unit"><span class="toc-number">1.1.</span> <span class="toc-text">Clock (Integer Time Unit)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Combinatorial-Logic-Vs-Sequential-Logic"><span class="toc-number">1.2.</span> <span class="toc-text">Combinatorial Logic Vs. Sequential Logic</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flip-Flops-%E8%A7%A6%E5%8F%91%E5%99%A8-Unit-3-2"><span class="toc-number">2.</span> <span class="toc-text">Flip Flops(触发器) (Unit 3.2)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Flip-Flop"><span class="toc-number">2.1.</span> <span class="toc-text">D Flip Flop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-to-build-the-D-Flip-Flop"><span class="toc-number">2.2.</span> <span class="toc-text">How to build the D Flip Flop?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Remember-Forever"><span class="toc-number">2.3.</span> <span class="toc-text">Remember Forever</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Bit-Register"><span class="toc-number">3.</span> <span class="toc-text">1-Bit Register</span></a></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="Sequential-Logic-Unit-3-1"><a href="#Sequential-Logic-Unit-3-1" class="headerlink" title="Sequential Logic (Unit 3.1)"></a>Sequential Logic (Unit 3.1)</h2><p>In this unit we introduce the issue of <strong>time</strong> into the system, since we didn’t have the <u>notion of change</u> before. To simplify the concept, we divide time into atomic pieces, which is <strong>clock</strong>.</p>
+<h3 id="Clock-Integer-Time-Unit"><a href="#Clock-Integer-Time-Unit" class="headerlink" title="Clock (Integer Time Unit)"></a>Clock (Integer Time Unit)</h3><p>Clock can be viewed as an oscillator at a certain fixed rate, of which each cycle is treated as a time unit, like time 0, time 1 and so on.</p>
+<p>The signals are viewed as a indivisible thing <strong>as if nothing changes within each time unit</strong>. As a input signal is renewed every cycle, the output signal instantaneously follows (几乎同时). </p>
+<p><strong>You may wonder if this is real.</strong> Indeed, there may be delay in physical electrical signals. But, we can think it as a way that <strong>the voltage change</strong> (the grey area in the screenshot below) <strong>happens between cycles</strong>, while luckily, the cycles are a little bit wider than this instability. So, it is safe to ignore it and focus on the end of each time unit. </p>
+<p><img src="/images/Nand2Tetris/theClock.png"></p>
+<p>Also, (my guess) <strong>another reason</strong> may be given by the answer “Why binary?”. —&gt; it may takes time to reach the final and consistent stage but not necessarily precise but it’s already enough to tell zero from one.</p>
+<h3 id="Combinatorial-Logic-Vs-Sequential-Logic"><a href="#Combinatorial-Logic-Vs-Sequential-Logic" class="headerlink" title="Combinatorial Logic Vs. Sequential Logic"></a>Combinatorial Logic Vs. Sequential Logic</h3><p>Combinatorial:<br>$$<br>out[t] = function(in[t])<br>$$<br>Above is what we learned in the previous units.</p>
+<p>Sequential:<br>$$<br>out[t] = function(in[t - 1])<br>$$<br>This is what we are going to talk about next.</p>
+<hr>
+<p>The above topic requires an element: <strong>Remembering State</strong>, so that the time unit <code>t</code> can response according to time unit <code>t - 1</code>.</p>
+<p>That means it has to be in two different physical states, which must be able to <strong>shift</strong> according to the logic of the previous time unit.</p>
+<h2 id="Flip-Flops-触发器-Unit-3-2"><a href="#Flip-Flops-触发器-Unit-3-2" class="headerlink" title="Flip Flops(触发器) (Unit 3.2)"></a>Flip Flops(触发器) (Unit 3.2)</h2><p>Gates that can <strong>flip</strong> between 2 gates —&gt; Flip Flops</p>
+<h3 id="D-Flip-Flop"><a href="#D-Flip-Flop" class="headerlink" title="D Flip Flop"></a>D Flip Flop</h3><p><img src="/images/Nand2Tetris/SequentialChip.png" alt="The Clocked Data Flip Flop or &quot;D Flip Flop&quot; (即D触发器)"></p>
+<ul>
+<li>The little triangle represents this is a sequential chip.</li>
+<li>It is primitive in this course, like Nand Gate, the base of all other gates.</li>
+<li>It can be built from Nand Gate.</li>
+<li>It is a simple gate with “memory”.</li>
+</ul>
+<h3 id="How-to-build-the-D-Flip-Flop"><a href="#How-to-build-the-D-Flip-Flop" class="headerlink" title="How to build the D Flip Flop?"></a>How to build the D Flip Flop?</h3><p><strong>Steps:</strong></p>
+<ol>
+<li>Create a loop which amplifying the same signal.</li>
+<li>Provide isolation between sequential time units.</li>
+<li>再多的实现部分也不会在这个课上讲了……</li>
+</ol>
+<h3 id="Remember-Forever"><a href="#Remember-Forever" class="headerlink" title="Remember Forever"></a>Remember Forever</h3><p>把D触发器输出连回到输入，就能实现数据的维持了。在回去的时候通过一些Combinatorial Logic就能进行其他计算的操作了。</p>
+<p>这个可以进一步整合成一个“register”。</p>
+<hr>
+<h2 id="1-Bit-Register"><a href="#1-Bit-Register" class="headerlink" title="1-Bit Register"></a>1-Bit Register</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (load(t - 1) &#x3D;&#x3D; true)</span><br><span class="line">	out(t) &#x3D; in(t - 1) &#x2F;&#x2F; Load in </span><br><span class="line">else</span><br><span class="line">	out(t) &#x3D; out(t - 1) &#x2F;&#x2F; maintain</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/Nand2Tetris/registerImple.png" alt="1-Bit Chip Implementation"></p>
+<hr>
+<p>Once we work out the 1-bit memory, we can build the much larger memory.</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2021/02/10/Memory-Units/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Memory Units
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2021/02/07/project2/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Project 2: Boolean Arithmetic</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Ada Huang &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
