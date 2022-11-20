@@ -102,7 +102,7 @@ theme: wikitten
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
+deploy: 
   type: git
-  repo: git@github.com:adahuangsx/blog-source-code.git
+  repo: git@github.com:adahuangsx/adahuangsx.github.io.git
   branch: master
