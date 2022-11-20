@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://adahuangsx.github.io/tags/index.html</loc>
+    <loc>https://adahuangsx.github.io/categories/index.html</loc>
     
     <lastmod>2022-11-20</lastmod>
     
   </url>
   
   <url>
-    <loc>https://adahuangsx.github.io/categories/index.html</loc>
+    <loc>https://adahuangsx.github.io/tags/index.html</loc>
     
     <lastmod>2022-11-20</lastmod>
     
@@ -51,6 +51,13 @@
   </url>
   
   <url>
+    <loc>https://adahuangsx.github.io/2021/01/23/hardware-simulator/</loc>
+    
+    <lastmod>2022-11-20</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://adahuangsx.github.io/2022/11/20/hello-world/</loc>
     
     <lastmod>2022-11-20</lastmod>
@@ -59,13 +66,6 @@
   
   <url>
     <loc>https://adahuangsx.github.io/2021/03/10/input-and-output/</loc>
-    
-    <lastmod>2022-11-20</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://adahuangsx.github.io/2021/01/23/hardware-simulator/</loc>
     
     <lastmod>2022-11-20</lastmod>
     
@@ -93,14 +93,14 @@
   </url>
   
   <url>
-    <loc>https://adahuangsx.github.io/2021/01/23/Why-Nand/</loc>
+    <loc>https://adahuangsx.github.io/2021/02/10/Memory-Units/</loc>
     
     <lastmod>2022-11-20</lastmod>
     
   </url>
   
   <url>
-    <loc>https://adahuangsx.github.io/2021/02/10/Memory-Units/</loc>
+    <loc>https://adahuangsx.github.io/2021/01/23/Why-Nand/</loc>
     
     <lastmod>2022-11-20</lastmod>
     
@@ -128,14 +128,14 @@
   </url>
   
   <url>
-    <loc>https://adahuangsx.github.io/2021/04/15/Architecture/</loc>
+    <loc>https://adahuangsx.github.io/2021/02/06/Binary-ALU/</loc>
     
     <lastmod>2022-11-20</lastmod>
     
   </url>
   
   <url>
-    <loc>https://adahuangsx.github.io/2021/02/06/Binary-ALU/</loc>
+    <loc>https://adahuangsx.github.io/2021/04/15/Architecture/</loc>
     
     <lastmod>2022-11-20</lastmod>
     
